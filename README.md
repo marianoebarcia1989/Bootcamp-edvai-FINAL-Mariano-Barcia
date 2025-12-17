@@ -1,4 +1,4 @@
-# 🏆 Proyecto Final: Análisis Estratégico de Bienestar para RR. HH.
+# 🏆 Proyecto Final: Análisis Estratégico de Bienestar y Hábitos Saludables
 
 ## 🌟 Descripción General
 
