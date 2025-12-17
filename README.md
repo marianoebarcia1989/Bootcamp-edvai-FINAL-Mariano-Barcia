@@ -182,6 +182,5 @@ La correcta configuración del Modelo Estrella es crucial. Todas las relaciones 
 | Recurso | Enlace |
 | --- | --- |
 | **Dashboard Power BI** | [[INSERTAR LINK AL DASHBOARD PUBLICADO AQUÍ]](https://app.powerbi.com/groups/me/reports/73321080-e9d9-40d0-85a9-47b7f721ea69/70d1634e2269bbb76948?experience=power-bi) |
-| **Archivo .pbix** | [INSERTAR LINK PARA DESCARGA DEL .pbix AQUÍ] |
 | **Archivo CSV (Data Source)** | [STATUSWELLBEING final.csv](STATUSWELLBEING final.csv) |[DASHBOARD BIENESTAR RRHH.pdf](https://github.com/user-attachments/files/24204688/DASHBOARD.BIENESTAR.RRHH.pdf)
 
