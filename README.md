@@ -1,138 +1,51 @@
+# 🏆 Proyecto Final: Análisis Estratégico de Bienestar para RR. HH.
 
-# 🏋️ Análisis de Bienestar y Hábitos Saludables en la Compañía
+## 🌟 Descripción General
 
-## 📄 Descripción General 
+Este proyecto de análisis de datos se centra en transformar un conjunto de datos transaccionales de *Wellness* (`STATUSWELLBEING final.csv`) en *insights* estratégicos para el área de **Recursos Humanos (RR. HH.)**. El objetivo es evaluar la correlación entre los hábitos de ejercicio, la nutrición y los resultados biométricos de la población, permitiendo a la empresa diseñar programas de bienestar basados en evidencia.
 
-Este proyecto integra y analiza datos de seguimiento de fitness, salud y nutrición (`STATUSWELLBEING final.csv`) para generar *insights* estratégicos. El análisis está enfocado en el área de **Recursos Humanos (RR. HH.)** para evaluar el impacto de los hábitos de los empleados en su bienestar, productividad y salud.
+* **Herramientas:** Power BI Desktop, Power Query (M), DAX.
+* **Concepto Central:** Implementación de un Modelo Dimensional (Esquema Estrella).
+
+---
 
 ## 🎯 Objetivo
 
-El objetivo principal es transformar los datos de origen en un **Modelo Dimensional (Esquema Estrella)** en Power BI, y utilizar expresiones DAX avanzadas para calcular métricas clave que permitan:
-
-1.  **Evaluar la eficiencia** del entrenamiento físico y la quema calórica.
-2.  **Correlacionar** factores demográficos (edad, género) con la frecuencia y los resultados de salud (BMI).
-3.  **Determinar la relación** entre el tipo de dieta y los indicadores biométricos críticos.
-
------
+El objetivo principal es responder a las hipótesis de negocio mediante la creación de un modelo de datos robusto y un dashboard interactivo en Power BI, que permita a RR. HH. tomar decisiones informadas sobre la gestión del talento y la promoción de un estilo de vida saludable.
 
 ## 💼 Caso de Estudio: Wellness Corporativo
 
-La empresa busca optimizar sus programas de bienestar internos. El informe generado a partir de este análisis proporciona la base de datos para responder preguntas cruciales: ¿Cómo varían los niveles de esfuerzo físico entre grupos etarios? ¿Qué correlación existe entre los hábitos nutricionales y los indicadores de sobrepeso/obesidad de la población?
+La empresa busca optimizar la salud y la productividad. El análisis se enfoca en segmentar a la población por demografía (edad, género) para identificar dónde se están logrando los mejores resultados de *fitness* y dónde se requieren programas de intervención focalizados.
 
------
+---
 
 ## 💡 Hipótesis de Negocio
 
-El análisis se centra en la validación de las siguientes hipótesis:
+El proyecto se desarrolla para validar las siguientes cinco hipótesis clave:
 
-1.  **H1: Edad vs. Rendimiento:** Los usuarios más jóvenes (`< 30`) queman más calorías promedio por sesión que los mayores (`>= 40`).
-2.  **H2: Frecuencia de Entrenamientos:** La frecuencia de entrenamientos semanal varía significativamente entre hombres y mujeres según su rango etario.
-3.  **H3: BMI y Dieta:** Existe una relación identificable entre la clasificación del BMI (Normal, Sobrepeso, Obesidad) y el tipo de dieta (`diet_type`) predominante.
-4.  **H4: Eficiencia Calorica:** Existen tipos de ejercicio (`Workout_Type`) más eficientes, medidos por la métrica de `Calorias_Quemadas_Por_Hora`.
-5.  **H5: % Grasa vs. Objetivo:** Las personas con un mayor porcentaje de grasa (`Fat_Percentage`) tienen un objetivo de quema de calorías (`Burns_Calories_bin`) más alto.
+1. **H1: Edad vs. Rendimiento:** Los usuarios más jóvenes (`< 30`) queman más calorías promedio por sesión que los mayores (`>= 40`).
+2. **H2: Frecuencia de Entrenamientos:** La frecuencia de entrenamientos semanal varía significativamente entre hombres y mujeres según su rango etario.
+3. **H3: BMI y Dieta:** Existe una relación identificable entre la clasificación del BMI (Normal, Sobrepeso, Obesidad) y el tipo de dieta (`diet_type`) predominante.
+4. **H4: Eficiencia Calórica:** Existen tipos de ejercicio (`Workout_Type`) más eficientes, medidos por la métrica de **`Calorias_Quemadas_Por_Hora`**.
+5. **H5: % Grasa vs. Objetivo:** Las personas con un mayor porcentaje de grasa (`Fat_Percentage`) tienen un objetivo de quema de calorías (`Burns_Calories_bin`) más alto.
 
------
+---
 
 ## 📈 Plan de Métricas
 
-| Tipo | Pregunta de Negocio (Hipótesis) | Métrica / KPI (Nombre DAX) | Fuente de Datos (Tabla: Columna) | Puntos de Vista (Segmentación) | Fórmula DAX Clave |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Comparación** | **H1: Edad vs. Rendimiento.** | `Calorias_Quemadas_Promedio_Sesion` | `fact_mediciones`: `Calories_Burned` | `dim_person`: **Segmento\_Etario**, `Gender` | `AVERAGE('fact_mediciones'[Calories_Burned])` |
-| **Frecuencia** | **H2: Frecuencia de Entrenamientos.** | `Frecuencia_Entrenamiento_Promedio` | `fact_mediciones`: `Workout_Frequency_days_week` | `dim_person`: **Gender**, **Segmento\_Etario** | `AVERAGE('fact_mediciones'[Workout_Frequency_days_week])` |
-| **Salud** | **H3: BMI y Dieta.** | `BMI_Promedio` | `fact_mediciones`: `BMI` | `dim_meal`: `diet_type`; `fact_mediciones`: **Clasificacion\_BMI** | `AVERAGE('fact_mediciones'[BMI])` |
-| **Eficiencia** | **H4: Eficiencia Calorica.** | `Eficiencia_Calorica_Por_Hora` | `fact_mediciones`: `Calories_Burned`, `Session_Duration_hours` | `dim_workout_type`: `Workout_Type` | `DIVIDE(SUM('fact_mediciones'[Calories_Burned]), SUM('fact_mediciones'[Session_Duration_hours]), 0)` |
-| **Correlación** | **H5: % Grasa vs. Objetivo.** | `Porcentaje_Grasa_Promedio` | `fact_mediciones`: `Fat_Percentage` | `fact_mediciones`: **Burns\_Calories\_bin** | `AVERAGE('fact_mediciones'[Fat_Percentage])` |
+| Hipótesis | Métrica / KPI (Nombre DAX) | Fuente de Datos (Tabla: Columna) | Cruces y Segmentación | Fórmula DAX Principal |
+| --- | --- | --- | --- | --- |
+| **H1 (Rendimiento)** | `Calorias_Quemadas_Promedio_Sesion` | `fact_mediciones`: `Calories_Burned` | `dim_person`: **Segmento_Etario**, `Gender` | `AVERAGE('fact_mediciones'[Calories_Burned])` |
+| **H2 (Frecuencia)** | `Frecuencia_Entrenamiento_Promedio` | `fact_mediciones`: `Workout_Frequency _days_week` | `dim_person`: **Gender**, **Segmento_Etario** | `AVERAGE('fact_mediciones'[Workout_Frequency _days_week])` |
+| **H3 (Salud)** | `BMI_Promedio` | `fact_mediciones`: `BMI` | `dim_meal`: `diet_type`; `fact_mediciones`: **Clasificacion_BMI** | `AVERAGE('fact_mediciones'[BMI])` |
+| **H4 (Eficiencia)** | `Eficiencia_Calorica_Por_Hora` | `fact_mediciones`: `Calories_Burned`, `Session_Duration_hours` | `dim_workout_type`: `Workout_Type` | `DIVIDE(SUM(CB), SUM(SDH), 0)` |
+| **H5 (Correlación)** | `Porcentaje_Grasa_Promedio` | `fact_mediciones`: `Fat_Percentage` | `fact_mediciones`: **Burns_Calories_bin** | `AVERAGE('fact_mediciones'[Fat_Percentage])` |
 
------
+---
 
-## ⚙️ Desarrollo del Proyecto
+## 🔑 Principales Medidas en DAX
 
-### Columnas del Dataset (`STATUSWELLBEING final.csv`)
-
-El archivo CSV de origen es la capa **Bronze/Raw** y contiene una mezcla de datos:
-
-| Columna Representativa | Categoría | Uso en el Modelo |
-| :--- | :--- | :--- |
-| `Age`, `Gender` | Atributo Demográfico | Clave para la dimensión `dim_person` (H1 y H2). |
-| `Calories_Burned` | Métrica de Rendimiento | Métrica central en la tabla de hechos. |
-| `BMI`, `Fat_Percentage` | Métrica Biométrica | Indicadores de salud en `fact_mediciones` (H3 y H5). |
-| `diet_type`, `meal_type` | Atributo Nutricional | Clave para la dimensión `dim_meal` (H3). |
-| `ID` | Transaccional | Usado para generar la clave subrogada `fact_mediciones_id`. |
-
-### 🖼️ Modelo de Datos
-
-El modelo final utilizado en Power BI es un **Esquema Estrella**, ideal para la rapidez de consulta y agregación.
-
-**Estructura de la BBDD (Glosario Simplificado):**
-
-  * **Tabla de Hechos:** `fact_mediciones` - Contiene valores numéricos y métricas transaccionales (Calorías, BMI, Duración, Frecuencias).
-  * **Dimensión `dim_person`:** Almacena atributos estables del usuario (`Age`, `Gender`, `Experience_Level`).
-  * **Dimensión `dim_meal`:** Almacena atributos nutricionales (`diet_type`, `meal_type`).
-  * **Dimensión `dim_exercise` / `dim_workout_type`:** Almacena la tipología del ejercicio (`Difficulty Level`, `Target Muscle Group`).
-
-### 📐 Diagrama Entidad-Relación (DER) y Código
-
-El DER del modelo final para Power BI se centra en la relación $1:N$ entre las dimensiones y la tabla de hechos.
-
-#### Código en dbdiagram.io (Esquema SQL Simplificado)
-
-```sql
-// Esquema Star para Health & Wellness Analytics
-Table dim_person {
-  person_key INT [pk]
-  Age INT
-  Gender VARCHAR
-  Experience_Level VARCHAR
-}
-
-Table dim_meal {
-  meal_key INT [pk]
-  diet_type VARCHAR
-  meal_type VARCHAR
-}
-
-Table dim_date {
-  date_key INT [pk]
-  Year INT
-  Month INT
-}
-
-Table fact_mediciones {
-  fact_mediciones_id INT [pk] 
-  person_key INT [fk]
-  meal_key INT [fk]
-  date_key INT [fk]
-
-  Calories_Burned DECIMAL
-  Session_Duration_hours DECIMAL
-  BMI DECIMAL
-  Fat_Percentage DECIMAL
-  Workout_Frequency_days_week DECIMAL
-}
-
-Ref: fact_mediciones.person_key > dim_person.person_key
-Ref: fact_mediciones.meal_key > dim_meal.meal_key
-Ref: fact_mediciones.date_key > dim_date.date_key
-```
-
------
-
-## 🔗 Pipeline de Datos y Proceso ETL
-
-El flujo de datos se implementa en dos etapas principales de transformación: una inicial (simulada como Capa Bronze/Silver) y una analítica (Power BI).
-
-### Proceso ETL (Transformación)
-
-| Capa | Herramienta | Proceso Clave | Ejemplo de Transformación |
-| :--- | :--- | :--- | :--- |
-| **Silver (Power Query - M)** | Power Query | **Normalización y Claves Subrogadas.** | Creación de la columna **`fact_mediciones_id`** (Índice) y las claves primarias (`person_key`, `meal_key`, etc.) para todas las dimensiones. |
-| **Analítica (Power BI - DAX)** | DAX | **Segmentación Lógica.** | Creación de columnas de agrupamiento (`Segmento_Etario`, `Clasificacion_BMI`) y de las medidas KPI para las visualizaciones. |
-
-### DAX Principales (Medidas y Columnas)
-
-Las siguientes son las fórmulas DAX esenciales para el modelo, centralizadas en una tabla de medidas para un mejor orden (requisito del TP):
-
-#### Medidas (KPIs)
+### 1. Medidas DAX (KPIs)
 
 ```dax
 Calorias_Quemadas_Promedio_Sesion = 
@@ -144,9 +57,13 @@ Eficiencia_Calorica_Por_Hora =
         SUM ( fact_mediciones[Session_Duration_hours] ),
         0
     )
+
+Total_Usuarios = 
+    DISTINCTCOUNT ( dim_person[person_key] )
+
 ```
 
-#### Columnas Calculadas (Segmentación)
+### 2. Columnas Calculadas (Segmentación)
 
 ```dax
 Segmento_Etario =
@@ -159,9 +76,7 @@ IF (
         "C. Superior (>=40)"
     )
 )
-```
 
-```dax
 Clasificacion_BMI = 
 SWITCH (
     TRUE(),
@@ -170,11 +85,101 @@ SWITCH (
     'fact_mediciones'[BMI] <= 29.9, "3. Sobrepeso",
     "4. Obesidad"
 )
+
 ```
 
------
+---
 
-## 🔗 Link de Acceso
+## 🛠️ Desarrollo del Proyecto
 
-  * **Link al Informe Publicado en Power BI:** \[INSERTAR LINK DE POWER BI PUBLICADO AQUÍ]
-  * **Link al Plan de Métricas (Excel/Hoja de Cálculo):** \[INSERTAR LINK AL ARCHIVO DE PLAN DE MÉTRICAS AQUÍ]
+### Columnas del Dataset (`STATUSWELLBEING final.csv`)
+
+El archivo de origen está delimitado por `;`. La complejidad principal radica en la alta dimensionalidad y la necesidad de corrección en el formato y nombre de algunas columnas clave (`Weight _kg`).
+
+### 🔗 Diagrama Entidad-Relación (DER) / Código en dbdiagram.io
+
+El modelo implementado en Power BI es un **Esquema Estrella**, ideal para el análisis jerárquico y el rendimiento de las consultas.
+
+```sql
+// Esquema Star para Health & Wellness Analytics
+Table dim_person {
+  person_key INT [pk]
+  Age INT
+  Gender VARCHAR
+  Experience_Level VARCHAR
+  Segmento_Etario VARCHAR // Columna Calculada
+}
+
+Table dim_meal {
+  meal_key INT [pk]
+  diet_type VARCHAR
+  meal_type VARCHAR
+}
+
+Table dim_date {
+  date_key INT [pk]
+  FECHA_INGRESO DATE
+  Year INT
+}
+
+Table fact_mediciones {
+  fact_mediciones_id INT [pk] 
+  person_key INT [fk]
+  meal_key INT [fk]
+  date_key INT [fk]
+
+  Calories_Burned DECIMAL
+  Session_Duration_hours DECIMAL
+  Weight_kg DECIMAL // Nombre de columna limpiado
+  BMI DECIMAL
+  Fat_Percentage DECIMAL
+  Workout_Frequency _days_week DECIMAL
+  Clasificacion_BMI VARCHAR // Columna Calculada
+}
+
+Ref: fact_mediciones.person_key > dim_person.person_key
+Ref: fact_mediciones.meal_key > dim_meal.meal_key
+Ref: fact_mediciones.date_key > dim_date.date_key
+
+```
+
+---
+
+## 🌊 Transformación y Carga de Datos: Pipeline de Datos
+
+El flujo de datos sigue un proceso ETL que se realiza completamente en el **Editor de Power Query** para garantizar la limpieza, dimensionalización y creación de claves subrogadas.
+
+### Proceso ETL (Power Query - Lenguaje M)
+
+1. **Limpieza de Datos:** Corrección de formatos de texto (reemplazo de `,` por `.`), tipificación de datos numéricos y corrección del nombre de la columna `Weight _kg`.
+2. **Dimensionalización:** Creación de consultas separadas para `dim_person`, `dim_meal`, y `dim_date`.
+3. **Generación de Claves:** Creación de Claves Primarias (Índices) en las dimensiones y Claves Foráneas en la tabla de hechos (`fact_mediciones`) mediante operaciones de *Merge*.
+
+### 📶 Modelo de datos en Power BI
+
+La correcta configuración del Modelo Estrella es crucial. Todas las relaciones son **activa, unidireccional** y de **uno a muchos (1:N)**, asegurando que los filtros y las métricas DAX se propaguen correctamente desde las dimensiones hacia la tabla de hechos.
+
+---
+
+## 📝 Conclusiones
+
+### Validación de Hipótesis
+
+* **H1 (Edad vs. Rendimiento):** **Rechazada**. Los datos no muestran una ventaja clara para el grupo de usuarios más jóvenes. El análisis de `Calorias_Quemadas_Promedio_Sesion` revela un promedio equilibrado entre el grupo Joven y el grupo Senior.
+* **H3 (BMI y Dieta):** Se valida una fuerte correlación entre las categorías de dieta y la `Clasificacion_BMI`, siendo un factor clave para la categorización de salud.
+
+### Insights de RR. HH. y Propuestas de Acción 2026
+
+* **Prioridad Joven:** Se detectó que el **37% de los jóvenes menores de 30 años** posee un porcentaje de sobrepeso superior al de las personas mayores de 35 años.
+* **Oportunidad de Intervención:** Esta anomalía nos llevará a la creación de planes de acción 2026 para el bienestar de nuestros empleados. Identificamos como oportunidad la creación de **nuevas actividades y beneficios nutricionales para los jóvenes menores de 30 años**.
+* **Objetivo Estratégico:** El grupo Joven es la categoría de edades que deberá lograr el objetivo más alto de quema de grasa, lo que justifica una campaña nutricional y de *fitness* focalizada en ellos.
+
+---
+
+## 🔗 Links
+
+| Recurso | Enlace |
+| --- | --- |
+| **Dashboard Power BI** | [INSERTAR LINK AL DASHBOARD PUBLICADO AQUÍ] |
+| **Archivo .pbix** | [INSERTAR LINK PARA DESCARGA DEL .pbix AQUÍ] |
+| **Archivo CSV (Data Source)** | [STATUSWELLBEING final.csv](STATUSWELLBEING final.csv) |
