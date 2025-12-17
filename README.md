@@ -15,7 +15,7 @@ El objetivo principal es responder a las hipótesis de negocio mediante la creac
 
 ## 💼 Caso de Estudio: Wellness Corporativo
 
-La empresa busca optimizar la salud y la productividad. El análisis se enfoca en segmentar a la población por demografía (edad, género) para identificar dónde se están logrando los mejores resultados de *fitness* y dónde se requieren programas de intervención focalizados.
+La empresa busca optimizar la salud de sus empleados y por ende su calidad de vida y productividad. El análisis se enfoca en segmentar a la población por demografía (edad, género, alimentación y actividad física) para identificar dónde se están logrando los mejores resultados de y dónde se requieren programas de intervención focalizados.
 
 ---
 
