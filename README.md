@@ -184,6 +184,6 @@ La correcta configuración del Modelo Estrella es crucial. Todas las relaciones 
 ![Diapositiva2](https://github.com/user-attachments/assets/6adc1847-f80f-4d0d-9ce4-11aaab68aeb1)
 ![Diapositiva3](https://github.com/user-attachments/assets/ea129a3e-17bc-4be3-b90a-df1ae0493693)
 ![Diapositiva4](https://github.com/user-attachments/assets/27b37209-0345-451e-8271-0c83a68c4f74)
-| **Dashboard Power BI** | [[HAGA CLICK AQUI]](<iframe title="DASHBOARD BIENESTAR RRHH" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNDJjYTlhZTAtNzJmMC00M2M1LTk4ZjItMDQ2OGFjMGM4MmM1IiwidCI6IjUyMWU0MzBmLWJhM2MtNGQ0Ny05Zjk3LTE2Yjk0NWIwYTg1MCIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe> |
+| **Dashboard Power BI Interactivo** | * [Ver Dashboard en Power BI Service](<iframe title="DASHBOARD BIENESTAR RRHH" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiYTc4NDYzOGQtMjhjYS00NGI1LTg5MzUtZjc1YTJiZWRiYWJkIiwidCI6IjUyMWU0MzBmLWJhM2MtNGQ0Ny05Zjk3LTE2Yjk0NWIwYTg1MCIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>)
 | **Archivo CSV (Data Source)** | [STATUSWELLBEING final.csv](STATUSWELLBEING final.csv) |[DASHBOARD BIENESTAR RRHH.pdf](https://github.com/user-attachments/files/24204688/DASHBOARD.BIENESTAR.RRHH.pdf)
 
