@@ -4,7 +4,7 @@
 
 Este proyecto de análisis de datos se centra en transformar un conjunto de datos transaccionales de *Wellness* (`STATUSWELLBEING final.csv`) en *insights* estratégicos para el área de **Recursos Humanos (RR. HH.)**. El objetivo es evaluar la correlación entre los hábitos de ejercicio, la nutrición y los resultados biométricos de la población, permitiendo a la empresa diseñar programas de bienestar basados en evidencia.
 
-* **Herramientas:** Power BI Desktop, Power Query (M), DAX.
+* **Herramientas:** Kaggle, Power BI Desktop, Power Query (M), DAX.
 * **Concepto Central:** Implementación de un Modelo Dimensional (Esquema Estrella).
 
 ---
@@ -180,7 +180,10 @@ La correcta configuración del Modelo Estrella es crucial. Todas las relaciones 
 ## 🔗 Links
 
 | Recurso | Enlace |
-| --- | --- |
-| **Dashboard Power BI** | [[INSERTAR LINK AL DASHBOARD PUBLICADO AQUÍ]](https://app.powerbi.com/groups/me/reports/73321080-e9d9-40d0-85a9-47b7f721ea69/70d1634e2269bbb76948?experience=power-bi) |
+| --- | --- |![Diapositiva1](https://github.com/user-attachments/assets/df8df8b2-5d84-42dc-bf71-b51ff2ec7731)
+![Diapositiva2](https://github.com/user-attachments/assets/6adc1847-f80f-4d0d-9ce4-11aaab68aeb1)
+![Diapositiva3](https://github.com/user-attachments/assets/ea129a3e-17bc-4be3-b90a-df1ae0493693)
+![Diapositiva4](https://github.com/user-attachments/assets/27b37209-0345-451e-8271-0c83a68c4f74)
+| **Dashboard Power BI** | [[HAGA CLICK AQUI]](<iframe title="DASHBOARD BIENESTAR RRHH" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNDJjYTlhZTAtNzJmMC00M2M1LTk4ZjItMDQ2OGFjMGM4MmM1IiwidCI6IjUyMWU0MzBmLWJhM2MtNGQ0Ny05Zjk3LTE2Yjk0NWIwYTg1MCIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe> |
 | **Archivo CSV (Data Source)** | [STATUSWELLBEING final.csv](STATUSWELLBEING final.csv) |[DASHBOARD BIENESTAR RRHH.pdf](https://github.com/user-attachments/files/24204688/DASHBOARD.BIENESTAR.RRHH.pdf)
 
