@@ -97,11 +97,17 @@ SWITCH (
 El archivo de origen está delimitado por `;`. La complejidad principal radica en la alta dimensionalidad y la necesidad de corrección en el formato y nombre de algunas columnas clave (`Weight _kg`).
 
 ### 🔗 Diagrama Entidad-Relación (DER) / Código en dbdiagram.io
+## 🛠️ Desarrollo del Proyecto
 
-El modelo implementado en Power BI es un **Esquema Estrella**, ideal para el análisis jerárquico y el rendimiento de las consultas.
-<img width="956" height="660" alt="Untitled (1)" src="https://github.com/user-attachments/assets/53c35738-eb8f-456e-9597-002840808afc" />
+### 🔗 Diagrama Entidad-Relación (DER)
+El modelo implementado en Power BI sigue un **Esquema Estrella**, lo que permite una navegación fluida y un rendimiento óptimo de las medidas DAX.
 
----
+![Diagrama Entidad Relación](./diagrama_modelo_estrella.png)
+
+#### Código en dbdiagram.io
+ [dbdiagram.io](https://dbdiagram.io):
+
+```sql
 Table dim_person {
   person_key INT [pk]
   Age INT
@@ -127,17 +133,15 @@ Table fact_mediciones {
   person_key INT 
   meal_key INT 
   date_key INT 
-
   Calories_Burned DECIMAL
   Session_Duration_hours DECIMAL
   Weight_kg DECIMAL 
   BMI DECIMAL
   Fat_Percentage DECIMAL
-  "Workout_Frequency _days_week" DECIMAL // Nombre entre comillas por el espacio
+  "Workout_Frequency _days_week" DECIMAL
   Clasificacion_BMI VARCHAR 
 }
 
-// Relaciones (Estas líneas son las que crean visualmente las FK)
 Ref: fact_mediciones.person_key > dim_person.person_key
 Ref: fact_mediciones.meal_key > dim_meal.meal_key
 Ref: fact_mediciones.date_key > dim_date.date_key
