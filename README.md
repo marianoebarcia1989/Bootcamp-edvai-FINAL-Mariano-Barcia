@@ -97,9 +97,7 @@ SWITCH (
 El archivo de origen está delimitado por `;`. La complejidad principal radica en la alta dimensionalidad y la necesidad de corrección en el formato y nombre de algunas columnas clave (`Weight _kg`).
 
 ### 🔗 Diagrama Entidad-Relación (DER) / Código en dbdiagram.io
-## 🛠️ Desarrollo del Proyecto
 
-### 🔗 Diagrama Entidad-Relación (DER)
 El modelo implementado en Power BI sigue un **Esquema Estrella**, lo que permite una navegación fluida y un rendimiento óptimo de las medidas DAX.
 
 <img width="956" height="660" alt="Untitled (1)" src="https://github.com/user-attachments/assets/84234598-8161-449e-b407-33113051d789" />
